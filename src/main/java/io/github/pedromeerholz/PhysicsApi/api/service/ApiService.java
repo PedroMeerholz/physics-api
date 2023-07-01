@@ -20,6 +20,18 @@ public class ApiService {
         return this.criarObjetoResultado(peso, "N");
     }
 
+    public Resultado converterTemperatura(String escalaOriginal, String escalaFinal, float temperatura) {
+        if(escalaOriginal.equals("Celcius") && escalaFinal.equals("Fahrenheit")) {
+            return this.converterCelciusParaFahrenheit(temperatura);
+        }
+        return new Resultado();
+    }
+
+    private Resultado converterCelciusParaFahrenheit(float temperatura) {
+        float temperaturaFinal = temperatura * (9/5) + 32;
+        return this.criarObjetoResultado(temperaturaFinal, "F");
+    }
+
     private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {
         Resultado resultado = new Resultado();
         resultado.setResultado(resultadoEquacao);

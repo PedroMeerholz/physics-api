@@ -30,4 +30,9 @@ public class ApiController {
     public Resultado calcularPeso(@RequestParam float massa, @RequestParam float aceleracaoGravidade) {
         return this.apiService.calcularPeso(massa, aceleracaoGravidade);
     }
+
+    @GetMapping(value = "/conversaoTemperatura", produces = "application/json")
+    public Resultado converterTemperatura(@RequestParam String escalaOriginal, @RequestParam String escalaFinal, @RequestParam float temperatura) {
+        return this.apiService.converterTemperatura(escalaOriginal, escalaFinal, temperatura);
+    }
 }
