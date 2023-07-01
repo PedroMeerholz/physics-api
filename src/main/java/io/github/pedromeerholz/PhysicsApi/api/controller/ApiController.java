@@ -21,4 +21,8 @@ public class ApiController {
         return this.apiService.calcularVelocidadeMedia(espacoPercorrido, intervaloTempo);
     }
 
+    @GetMapping(value = "/forcaResultante", produces = "application/json")
+    public Resultado calcularForcaResultante(@RequestParam float massa, @RequestParam float aceleracao) {
+        return this.apiService.calcularForcaResultante(massa, aceleracao);
+    }
 }

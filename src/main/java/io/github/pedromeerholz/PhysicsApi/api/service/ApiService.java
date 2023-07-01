@@ -5,12 +5,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ApiService {
-
     public Resultado calcularVelocidadeMedia(float espacoPercorrido, float intervaloTempo) {
         float velocidadeMedia = espacoPercorrido / intervaloTempo;
         Resultado resultado = new Resultado();
         resultado.setResultado(velocidadeMedia);
         resultado.setUnidadeDeMedida("m/s");
+        return resultado;
+    }
+
+    public Resultado calcularForcaResultante(float massa, float aceleracao) {
+        float forcaResultante = massa * aceleracao;
+        return this.criarObjetoResultado(forcaResultante, "N");
+    }
+
+    private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {
+        Resultado resultado = new Resultado();
+        resultado.setResultado(resultadoEquacao);
+        resultado.setUnidadeDeMedida(unidadeDeMedida);
         return resultado;
     }
 }
