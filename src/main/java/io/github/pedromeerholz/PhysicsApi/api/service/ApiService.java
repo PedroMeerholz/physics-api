@@ -32,7 +32,7 @@ public class ApiService {
         } else if (escalaOriginal.equals("Kelvin") && escalaFinal.equals("Celcius")) {
             return this.converterKelvinParaCelcius(temperatura);
         } else if (escalaOriginal.equals("Kelvin") && escalaFinal.equals("Fahrenheit")) {
-
+            return this.converterKelvinParaFahrenheit(temperatura);
         }
         return new Resultado();
     }
@@ -60,6 +60,11 @@ public class ApiService {
     private Resultado converterKelvinParaCelcius(float temperatura) {
         float temperaturaFinal = (float) (temperatura - 273.15);
         return this.criarObjetoResultado(temperaturaFinal, "°C");
+    }
+
+    private Resultado converterKelvinParaFahrenheit(float temperatura) {
+        float temperaturaFinal = (float) ((temperatura - 273.15) * 1.8 + 32);
+        return this.criarObjetoResultado(temperaturaFinal, "°F");
     }
 
     private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {
