@@ -23,6 +23,16 @@ public class ApiService {
     public Resultado converterTemperatura(String escalaOriginal, String escalaFinal, float temperatura) {
         if(escalaOriginal.equals("Celcius") && escalaFinal.equals("Fahrenheit")) {
             return this.converterCelciusParaFahrenheit(temperatura);
+        } else if (escalaOriginal.equals("Celcius") && escalaFinal.equals("Kelvin")) {
+            return this.converterCelciusParaKelvin(temperatura);
+        } else if (escalaFinal.equals("Fahrenheit") && escalaOriginal.equals("Celcius")) {
+
+        } else if (escalaOriginal == "Fahrenheit" && escalaFinal.equals("Kelvin")) {
+
+        } else if (escalaFinal.equals("Kelvin") && escalaOriginal.equals("Celcius")) {
+
+        } else if (escalaFinal.equals("Kelvin") && escalaFinal.equals("Fahrenheit")) {
+
         }
         return new Resultado();
     }
@@ -30,6 +40,11 @@ public class ApiService {
     private Resultado converterCelciusParaFahrenheit(float temperatura) {
         float temperaturaFinal = temperatura * (9/5) + 32;
         return this.criarObjetoResultado(temperaturaFinal, "F");
+    }
+
+    private Resultado converterCelciusParaKelvin(float temperatura) {
+        float temperaturaFinal = (float) (temperatura + (273.15));
+        return this.criarObjetoResultado(temperaturaFinal, "K");
     }
 
     private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {
