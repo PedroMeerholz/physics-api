@@ -1,10 +1,17 @@
 package io.github.pedromeerholz.PhysicsApi.api.service;
 
-import io.github.pedromeerholz.PhysicsApi.api.Resultado;
+import io.github.pedromeerholz.PhysicsApi.api.resultado.Resultado;
+import io.github.pedromeerholz.PhysicsApi.api.conversorDeTemperatura.ConversorDeTemperatura;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ApiService {
+    private ConversorDeTemperatura conversorDeTemperatura;
+
+    public ApiService(ConversorDeTemperatura conversorDeTemperatura) {
+        this.conversorDeTemperatura = conversorDeTemperatura;
+    }
+
     public Resultado calcularVelocidadeMedia(float espacoPercorrido, float intervaloTempo) {
         float velocidadeMedia = espacoPercorrido / intervaloTempo;
         return this.criarObjetoResultado(velocidadeMedia, "m/s");
@@ -22,49 +29,19 @@ public class ApiService {
 
     public Resultado converterTemperatura(String escalaOriginal, String escalaFinal, float temperatura) {
         if(escalaOriginal.equals("Celcius") && escalaFinal.equals("Fahrenheit")) {
-            return this.converterCelciusParaFahrenheit(temperatura);
+            return this.conversorDeTemperatura.converterCelciusParaFahrenheit(temperatura);
         } else if (escalaOriginal.equals("Celcius") && escalaFinal.equals("Kelvin")) {
-            return this.converterCelciusParaKelvin(temperatura);
+            return this.conversorDeTemperatura.converterCelciusParaKelvin(temperatura);
         } else if (escalaOriginal.equals("Fahrenheit") && escalaFinal.equals("Celcius")) {
-            return this.converterFahrenheitParaCelcius(temperatura);
+            return this.conversorDeTemperatura.converterFahrenheitParaCelcius(temperatura);
         } else if (escalaOriginal.equals("Fahrenheit") && escalaFinal.equals("Kelvin")) {
-            return this.converterFahrenheitParaKelvin(temperatura);
+            return this.conversorDeTemperatura.converterFahrenheitParaKelvin(temperatura);
         } else if (escalaOriginal.equals("Kelvin") && escalaFinal.equals("Celcius")) {
-            return this.converterKelvinParaCelcius(temperatura);
+            return this.conversorDeTemperatura.converterKelvinParaCelcius(temperatura);
         } else if (escalaOriginal.equals("Kelvin") && escalaFinal.equals("Fahrenheit")) {
-            return this.converterKelvinParaFahrenheit(temperatura);
+            return this.conversorDeTemperatura.converterKelvinParaFahrenheit(temperatura);
         }
         return new Resultado();
-    }
-
-    private Resultado converterCelciusParaFahrenheit(float temperatura) {
-        float temperaturaFinal = temperatura * (9/5) + 32;
-        return this.criarObjetoResultado(temperaturaFinal, "°F");
-    }
-
-    private Resultado converterCelciusParaKelvin(float temperatura) {
-        float temperaturaFinal = (float) (temperatura + (273.15));
-        return this.criarObjetoResultado(temperaturaFinal, "K");
-    }
-
-    private Resultado converterFahrenheitParaCelcius(float temperatura) {
-        float temperaturaFinal = (float) ((temperatura - 32) / 1.8);
-        return this.criarObjetoResultado(temperaturaFinal, "°C");
-    }
-
-    private Resultado converterFahrenheitParaKelvin(float temperatura) {
-        float temperaturaFinal = (float) ((temperatura + 459.67) / 1.8);
-        return this.criarObjetoResultado(temperaturaFinal, "K");
-    }
-
-    private Resultado converterKelvinParaCelcius(float temperatura) {
-        float temperaturaFinal = (float) (temperatura - 273.15);
-        return this.criarObjetoResultado(temperaturaFinal, "°C");
-    }
-
-    private Resultado converterKelvinParaFahrenheit(float temperatura) {
-        float temperaturaFinal = (float) ((temperatura - 273.15) * 1.8 + 32);
-        return this.criarObjetoResultado(temperaturaFinal, "°F");
     }
 
     private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {

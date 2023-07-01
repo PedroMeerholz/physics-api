@@ -1,6 +1,6 @@
 package io.github.pedromeerholz.PhysicsApi.api.controller;
 
-import io.github.pedromeerholz.PhysicsApi.api.Resultado;
+import io.github.pedromeerholz.PhysicsApi.api.resultado.Resultado;
 import io.github.pedromeerholz.PhysicsApi.api.service.ApiService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package io.github.pedromeerholz.PhysicsApi.api;
+package io.github.pedromeerholz.PhysicsApi.api.resultado;
 
 public class Resultado {
     private float resultado;
