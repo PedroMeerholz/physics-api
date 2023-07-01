@@ -15,6 +15,11 @@ public class ApiService {
         return this.criarObjetoResultado(forcaResultante, "N");
     }
 
+    public Resultado calcularPeso(float massa, float aceleracaoGravidade) {
+        float peso = massa * aceleracaoGravidade;
+        return this.criarObjetoResultado(peso, "N");
+    }
+
     private Resultado criarObjetoResultado(float resultadoEquacao, String unidadeDeMedida) {
         Resultado resultado = new Resultado();
         resultado.setResultado(resultadoEquacao);

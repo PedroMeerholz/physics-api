@@ -25,4 +25,9 @@ public class ApiController {
     public Resultado calcularForcaResultante(@RequestParam float massa, @RequestParam float aceleracao) {
         return this.apiService.calcularForcaResultante(massa, aceleracao);
     }
+    
+    @GetMapping(value = "/peso", produces = "application/json")
+    public Resultado calcularPeso(@RequestParam float massa, @RequestParam float aceleracaoGravidade) {
+        return this.apiService.calcularPeso(massa, aceleracaoGravidade);
+    }
 }
