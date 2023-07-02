@@ -3,10 +3,13 @@ package io.github.pedromeerholz.PhysicsApi.api.conversorDeTemperatura;
 import io.github.pedromeerholz.PhysicsApi.api.resultado.Resultado;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormat;
+
 @Component
 public class ConversorDeTemperatura {
     public Resultado converterCelciusParaFahrenheit(float temperatura) {
-        float temperaturaFinal = temperatura * (9/5) + 32;
+        float temperaturaFinal = (float) (temperatura * 1.8 + 32);
+        temperaturaFinal = (temperaturaFinal * 2) / 2;
         return this.criarObjetoResultado(temperaturaFinal, "°F");
     }
 
