@@ -1,5 +1,8 @@
 package io.github.pedromeerholz.PhysicsApi.api.service;
 
+import io.github.pedromeerholz.PhysicsApi.api.calculadoras.CalculadoraForcaPeso;
+import io.github.pedromeerholz.PhysicsApi.api.calculadoras.CalculadoraForcaResultante;
+import io.github.pedromeerholz.PhysicsApi.api.calculadoras.CalculadoraVelocidadeMedia;
 import io.github.pedromeerholz.PhysicsApi.api.resultado.Resultado;
 import io.github.pedromeerholz.PhysicsApi.api.conversorDeTemperatura.ConversorDeTemperatura;
 import org.springframework.stereotype.Service;
@@ -13,17 +16,17 @@ public class ApiService {
     }
 
     public Resultado calcularVelocidadeMedia(float espacoPercorrido, float intervaloTempo) {
-        float velocidadeMedia = espacoPercorrido / intervaloTempo;
+        float velocidadeMedia = CalculadoraVelocidadeMedia.calcularVelocidadeMedia(espacoPercorrido, intervaloTempo);
         return this.criarObjetoResultado(velocidadeMedia, "m/s");
     }
 
     public Resultado calcularForcaResultante(float massa, float aceleracao) {
-        float forcaResultante = massa * aceleracao;
+        float forcaResultante = CalculadoraForcaResultante.calcularForcaResultante(massa, aceleracao);
         return this.criarObjetoResultado(forcaResultante, "N");
     }
 
     public Resultado calcularPeso(float massa, float aceleracaoGravidade) {
-        float peso = massa * aceleracaoGravidade;
+        float peso = CalculadoraForcaPeso.calcularPeso(massa, aceleracaoGravidade);
         return this.criarObjetoResultado(peso, "N");
     }
 
