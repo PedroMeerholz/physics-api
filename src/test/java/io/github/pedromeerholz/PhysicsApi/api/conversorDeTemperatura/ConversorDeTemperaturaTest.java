@@ -30,4 +30,28 @@ class ConversorDeTemperaturaTest {
         float temperaturaFinal = resultado.getResultado();
         Assertions.assertEquals(93.61, temperaturaFinal, 2);
     }
+
+    @Test
+    void converterFahrenheitParaKelvin() {
+        float temperatura = 100F;
+        Resultado resultado = this.conversorDeTemperatura.converterFahrenheitParaKelvin(temperatura);
+        float temperaturaFinal = resultado.getResultado();
+        Assertions.assertEquals(310.92, temperaturaFinal, 2);
+    }
+
+    @Test
+    void converterKelvinParaCelsius() {
+        float temperatura = 100F;
+        Resultado resultado = this.conversorDeTemperatura.converterKelvinParaCelcius(temperatura);
+        float temperaturaFinal = resultado.getResultado();
+        Assertions.assertEquals(-173.15, temperaturaFinal, 2);
+    }
+
+    @Test
+    void converterKelvinParaFahrenheit() {
+        float temperatura = 100F;
+        Resultado resultado = this.conversorDeTemperatura.converterKelvinParaFahrenheit(temperatura);
+        float temperaturaFinal = resultado.getResultado();
+        Assertions.assertEquals(-279.67, temperaturaFinal, 2);
+    }
 }
