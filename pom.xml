@@ -11,6 +11,7 @@
 	<groupId>io.github.pedromeerholz</groupId>
 	<artifactId>Physics-Api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>Physics-Api</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
