@@ -19,11 +19,6 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-core</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -32,11 +27,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,9 +39,15 @@
 			<version>5.10.0-M1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>physics</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
