@@ -2,6 +2,7 @@ package io.github.pedromeerholz.PhysicsApi.api.controller;
 
 import io.github.pedromeerholz.PhysicsApi.api.resultado.Resultado;
 import io.github.pedromeerholz.PhysicsApi.api.service.ApiService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,21 +18,25 @@ public class ApiController {
     }
 
     @GetMapping(value = "/velocidadeMedia", produces = "application/json")
+    @Operation(summary = "Cálculo de velocidade média", method = "GET")
     public Resultado calcularVelocidadeMedia(@RequestParam float espacoPercorrido, @RequestParam float intervaloTempo) {
         return this.apiService.calcularVelocidadeMedia(espacoPercorrido, intervaloTempo);
     }
 
     @GetMapping(value = "/forcaResultante", produces = "application/json")
+    @Operation(summary = "Cálculo de força resultante", method = "GET")
     public Resultado calcularForcaResultante(@RequestParam float massa, @RequestParam float aceleracao) {
         return this.apiService.calcularForcaResultante(massa, aceleracao);
     }
     
     @GetMapping(value = "/peso", produces = "application/json")
+    @Operation(summary = "Cálculo de Peso", method = "GET")
     public Resultado calcularPeso(@RequestParam float massa, @RequestParam float aceleracaoGravidade) {
         return this.apiService.calcularPeso(massa, aceleracaoGravidade);
     }
 
     @GetMapping(value = "/conversaoTemperatura", produces = "application/json")
+    @Operation(summary = "Converter temperatura entre as escalas Celsius, Fahrenheit e Kelvin")
     public Resultado converterTemperatura(@RequestParam String escalaOriginal, @RequestParam String escalaFinal, @RequestParam float temperatura) {
         return this.apiService.converterTemperatura(escalaOriginal, escalaFinal, temperatura);
     }
